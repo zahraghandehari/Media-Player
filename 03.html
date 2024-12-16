@@ -1,0 +1,102 @@
+<html>
+    <head>
+        <meta charset='UTF-8'>
+        <meta name='viewport' content='width=device-width', initial-scale='1.0'>
+        <title> Media Player</title>
+        <link href="https://fonts.googleapis.com/css?family=Mukta+Mahee:200,300,400|Abril+Fatface:400,700" 
+              rel="stylesheet">
+        <link rel="stylesheet" href="assets/css/03.css" />
+    </head>
+    <body>
+        <div class='container justify-center'>
+            <h1 id='header'>Media Player</h1>
+            <div id='media'>
+                <div id='mediaInfo'>
+                    <h3 id='title'></h3>
+                </div>
+                <div id='player' class='d-flex justify-center'>
+                    <button id='previous' onclick='previousMedia()'>prev</button>
+                    <audio id='mediaplaying' controls>
+                        <source id='mediasource'>
+                    </audio>
+                    <button id='next' onclick='nextMedia()'>next</button>
+                </div>
+            </div>
+            <ul id='mediaList' class='d-flex justify-center'></ul>
+        </div>
+        <script>
+            var medias = [
+                {
+                    title: 'A Night Full Of Stars',
+                    src: 'assets/musics/bensound-betterdays.mp3',
+                    poster: 'assets/images/OIP.jpg'
+                },
+                {
+                    title: 'Maan Night 01',
+                    src: 'assets/musics/Maan_Night_001.mp3',
+                    poster: 'assets/images/OIP (2).jpg'
+                },
+                {
+                    title: 'Maan Night 02',
+                    src: 'assets/musics/Maan_Night_002.mp3',
+                    poster: 'assets/images/OIP (3).jpg'
+                },
+                {
+                    title: 'Sunny Afternoon', 
+                    src: 'assets/musics/bensound-sunny.mp3',
+                    poster: 'assets/images/poster-SUNNY-AFTERNOON.jpg'
+                },
+                {
+                    title: 'Once Again', 
+                    src: 'assets/musics/bensound-onceagain.mp3',
+                    poster: 'assets/images/OIP (1).jpg'
+                },
+                {
+                    title: 'I Dont Care To Dance',
+                    src: 'assets/musics/j_e_sunde_i_dont_care_to_dance.mp3',
+                    poster: 'assets/images/R (3).jpg'
+                }
+            ]
+            var list = document.getElementById('mediaList');
+            var media = document.getElementById('mediaplaying');
+            var source = document.getElementById('mediasource');
+            var title = document.getElementById('title');
+            var currentMedia = 0
+            function mediaListShow () {
+                    medias.forEach(function (item, index, array) {
+                        var mediaItem = document.createElement('LI');
+                        var mediaImage = document.createElement('IMG');
+                        mediaImage.setAttribute('src' , item.poster);
+                        mediaImage.setAttribute('id' ,'mediaPoster');
+                        var mediaTitle = document.createElement('p');
+                        mediaTitle.textContent = item.title;
+                        //console.log(mediaItem, mediaImage);
+                        mediaItem.appendChild(mediaImage);
+                        mediaItem.appendChild(mediaTitle);
+                        mediaItem.classList.add('.d-flex');
+                        list.appendChild(mediaItem);
+                    });
+            }
+            function loadMedia(index) {
+                title.textContent = medias[index].title;
+                source.src = medias[index].src;
+                console.log(title, source);
+                media.load();
+                media.play();
+            }
+            function nextMedia() {
+                currentMedia++ ;
+                currentMedia > medias.length ? currentMedia = 0 :
+                loadMedia(currentMedia);
+                console.log(currentMedia);  
+            }
+            function previousMedia() {
+                currentMedia-1 < 0 ? currentMedia = medias.length-1 :
+                loadMedia(currentMedia--);
+                console.log(medias.length, currentMedia);   
+            }
+            loadMedia(currentMedia);
+            mediaListShow ();
+        </script>
+    </body>
+</html>

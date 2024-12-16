@@ -1,0 +1,61 @@
+html {
+    font-size: 10px;
+}
+* {
+    box-sizing: border-box;
+    padding: 0;
+}
+ul,
+ol {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+.container {
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 50px;
+}
+.d-flex {
+    display: flex;
+}
+.align-center {
+    align-items: center;
+}
+.space-between {
+    justify-content: space-between;
+}
+.justify-center {
+    justify-content: center; 
+}
+.content {
+    width: 80%;
+    gap: 100px;
+    margin: 0 auto;
+}
+#header {
+    margin-bottom: 40px;
+}
+#player {
+    gap: 10px;
+}
+#previous ,
+#next {
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+}
+#mediaList {
+    padding-top: 30px;
+    background-color: #f1f3f4;
+    gap: 10px;
+}
+li {
+    min-width: 100px;
+}
+#mediaPoster {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}

@@ -1,0 +1,1 @@
+![My Project Logo](assets/images/SharedScreenshot.jpg)
